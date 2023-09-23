@@ -30,15 +30,12 @@ function Select({ data, filter, onSelect }) {
 		}
 	};
 
-	const handleDropdownClick = () => {
+	const openItems = () => {
 		setIsOpen(true);
 	};
 
 	useEffect(() => {
 		document.addEventListener('click', handleClickOutside);
-		return () => {
-			document.removeEventListener('click', handleClickOutside);
-		};
 	}, []);
 
 	return (
@@ -48,7 +45,7 @@ function Select({ data, filter, onSelect }) {
 				value={inputValue}
 				onChange={handleInputChange}
 				placeholder="Введите значение"
-				onClick={handleDropdownClick}
+				onClick={openItems}
 			/>
 			{isOpen && <ul>
 				{filteredOptions.map((option, index) => (
